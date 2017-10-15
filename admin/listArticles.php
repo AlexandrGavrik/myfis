@@ -1,5 +1,5 @@
 <?php  require(PARTS.'/header.php');
- include(PARTS.'/left_aside.php');?>
+ //include(PARTS.'/left_aside.php');?>
 <article>
       <div id="adminHeader">
         <h2>Кабинет администратора</h2>

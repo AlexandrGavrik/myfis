@@ -1,5 +1,5 @@
 <?php  require(PARTS.'/header.php');
- include(PARTS.'/left_aside.php'); ?>
+ //include(PARTS.'/left_aside.php'); ?>
 <article>
       <div id="adminHeader">
         <h2>Кабинет администратора</h2>
@@ -27,7 +27,7 @@
           </li>
           <li>
             <label for="content">Контент</label>
-            <textarea name="content" id="content" placeholder="Контент" required maxlength="2000" style="height: 20em;"><?php echo htmlspecialchars( $results['article']->content )?></textarea>
+            <textarea name="content" id="content" placeholder="Контент" required maxlength="50000" style="height: 20em;"><?php echo htmlspecialchars( $results['article']->content )?></textarea>
           </li>
           <li>
             <label for="createdate">Дата создания</label>

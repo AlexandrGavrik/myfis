@@ -26,23 +26,8 @@ function archive() {
   $results['pageTitle'] = "Article Archive";
   require(PARTS.'/header.php');
  //include(PARTS.'/left_aside.php');
-
-	?>  <article>
-		<h1>Архив</h1>
-		  <ul id="headlines" class="archive">
-	<?php foreach ( $results['articles'] as $article ) { ?>
-			<li>
-			  <h2>
-				<span class="pubDate"><?php echo date('j F Y', $article->pubdate)?></span><a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>"><?php echo htmlspecialchars( $article->title )?></a>
-			  </h2>
-			  <p class="summary"><?php echo htmlspecialchars( $article->summary )?></p>
-			</li>
-	<?php } ?>
-		  </ul>
-		  <p>Всего статей: <?php echo $results['totalRows']?></p>
-		  <p><a href="./">Домой</a></p>
-		</article>
-	<?php }
+ include(PARTS.'/archive.php');
+}
 function viewArticle() {
   if ( !isset($_GET["articleId"]) || !$_GET["articleId"] ) {
     homepage();
@@ -54,7 +39,6 @@ function viewArticle() {
 		$ip=getRealIP();
 		$cook_time=strtotime("+1 day");
 		setcookie('uip', $ip, $cook_time);
-		echo date('r',$cook_time).'<br>'.$ip;
 		Article::counter((int)$_GET["articleId"], $l);
 	}else{$message="Рад снова видеть Вас!";}
 }
@@ -103,61 +87,8 @@ $commentsRows = $data['totalRows'];
 
   require(PARTS.'/header.php');//echo $_SERVER['HTTP_USER_AGENT'];print_r($_SERVER['SystemRoot']);
  //include(PARTS.'/left_aside.php');//echo $_COOKIE['uip'];
-	?>
-<?php
-
-?>		<article>
-		<p class="message"><?php echo $message;?></p>
-		<p><a href="./">Домой</a></p>
-		
-		<h1><?php echo htmlspecialchars( $results['article']->title )?></h1>
-		<p class="artic_info"><?php echo $results['article']->autor." - ".date('j F Y', $results['article']->pubdate)?></p>
-		  <div class="summary"><?php echo htmlspecialchars( $results['article']->summary )?></div>
-		  <div class="content"><?php echo $results['article']->content?></div>
-		  
-
-			<p id="like" class="like">
-				<a href=".?action=viewArticle&amp;articleId=<?php echo $results['article']->id?>&amp;vote=pro">Нравится: <?php echo $results['article']->liked;?>  </a>
-				<a href=".?action=viewArticle&amp;articleId=<?php echo $results['article']->id?>&amp;vote=against"> Ненравится: <?php echo $results['article']->disliked;?></a>
-				<span> Просмотров: <?php echo $results['article']->looked;?>  </span>
-				<span> Комментов: <?php echo $commentsRows;?></span>
-			</p>
-		
-
-		<section>
-		<p>Оставить комментарий</p>
-		<form action=".?action=viewArticle&amp;articleId=<?php echo $results['article']->id?>&amp;vote=comment#<?php echo $comment->id;?>" method="POST">
-			<input hidden name="articleid" type="text" value="<?php echo $results['article']->id?>"></input>
-		<ul>
-		<li>
-			<label for="autor">Имя</label>
-            <input type="text" name="autor" id="autor" placeholder="Автор"  required  maxlength="55"/>
-		</li><li>
-			<label for="content">Коммент</label>
-            <textarea name="content" id="content" placeholder="Контент" required maxlength="2000" style="height: 10rem; width:600px; "></textarea>
-			<input type="submit" name="sub" value="Оставить" />
-		</li>
-		</ul>
-		</form>
-		</section>
-		</section>
-<?php
-
-foreach ( $comments as $comment ) { ?>
-			<li id="<?php echo $comment->id;?>">
-			  
-				<p><span class="pubdate"><?php echo date('j F H:i:s', $comment->createdate);?></span><?php echo htmlspecialchars( $comment->autor )?></p>
-				<p><?php echo $comment->content; ?></p>
-			</li>
-	<?php } ?>
-		
-		
-		
-		
-		
-		</section>
-		</article>
-<?php }
+ include(PARTS.'/single.php');
+}
 function homepage() {
   $results = array();
   $data = Article::getList( HNA );
@@ -166,22 +97,6 @@ function homepage() {
   $results['pageTitle'] = "HomePage";
 	require(PARTS.'/header.php');
  //include(PARTS.'/left_aside.php');
-	?>
-	<article>
-		<h5>Hello my friends</h5> 
-	<?php foreach ( $results['articles'] as $article ) { ?>
-
-			<li>
-			  <h2>
-				<span class="pubdate"><?php echo date('j F', $article->pubdate)?></span><a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>"><?php echo htmlspecialchars( $article->title )?></a>
-			  </h2>
-			  <p class="summary"><?php echo htmlspecialchars( $article->summary )?></p>
-			</li>
-
-	<p>Всего статей: <?php } echo $results['totalRows']; ?></p>
-	
-
-
-	</article><?php 
+ include(PARTS.'/homepage.php');
 } 
  include(PARTS.'/footer.php');?>

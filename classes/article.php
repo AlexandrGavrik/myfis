@@ -28,7 +28,7 @@ class Article{
 		if ( isset( $data['status'] ) ) $this->status = (int)$data['status'];
 		if ( isset( $data['autor'] ) ) $this->autor = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Zа-яёА-ЯЁ0-9()]/u", "", $data['autor']);
 		if ( isset( $data['topic'] ) ) $this->topic = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Zа-яёА-ЯЁ0-9()]/u", "", $data['topic'] );
-		if ( isset( $data['tegs'] ) ) $this->tegs = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Zа-яёА-ЯЁ0-9()]/u", "", $data['tegs'] );
+		if ( isset( $data['tegs'] ) ) $this->tegs = preg_replace ( "/[^\.\-\_\@\:\# a-zA-Zа-яёА-ЯЁ0-9()]/u", "", $data['tegs'] );
 		if ( isset( $data['liked'] ) ) $this->liked = (int) $data['liked'];
 		if ( isset( $data['disliked'] ) ) $this->disliked = (int) $data['disliked'];
 		if ( isset( $data['looked'] ) ) $this->looked = (int) $data['looked'];

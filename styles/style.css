@@ -1,35 +1,85 @@
 
+header, nav, footer, article, aside {display:block;}
+html{
+	background: #fcfcff;
+	font-size: 16px;
+	font-family: Verdana, sans-serif;
+	line-height: 1.6rem;
+}
+body{
+	width: 100%;
+	max-width: 1600px;
+	margin: auto;
+}
 a {
 	text-decoration:none;color:inherit;
 }
 div{
 	box-sizing:border-box;margin:auto;padding:auto;
-	border:1px solid #999;
+	border:none;
 }
 p {
 	font-size:1rem;margin:1.6rem;color:#633;
 }
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(150,120,70,0.75),rgba(0,0,0,0));
+}
+h1{font-size: 2rem;line-height: 1.6rem;margin:1rem;color:#933;text-shadow: 3px 3px 3px black;}
+span{font-size:inherit;color:inherit;}
+
+	
+h2{font-size: 3rem;margin:1.6rem;color:#633;}
+h5{font-size:1rem;color:#633;}
+
+/* ============== H E A D E R ================ */
+
 
 header{
 	padding:auto;
-	
+	background:#000;
+	text-align:left;
 }
+header h1{font-size: 1.6rem;line-height: 2.6rem;margin:1rem;color:#fff;text-shadow: 3px 3px 3px #aaa;}
 header #logo,
 header #title{
-	display:inline-block;
+	display:block;
+	margin-left:1rem;
 }
 header #logo{
-	width:15%;
+	width:20%;
+	padding:1rem;
+	text-align:center;
+	font-size:3rem;font-weight:600;color:#fed;text-shadow: 3px 3px 5px #aaa;
 }
+header #logo .ls{
+	padding:0;
+	font-size:1rem;color:#fdb;text-shadow: 1px 1px 2px #fec;
+}
+header #logo #P{
+	margin-right:-0.3rem;
+}
+header #logo #W{
+	margin-left:-0.2rem;margin-right:-0.5rem;
+}
+
 header #title{
-	width:84%;
+	width:35%;
+}
+header nav{
+	border-top:4px solid #f94;border-bottom:4px solid #f94;
 }
 nav a{
-	display:inline-block;box-sizing:border-box;margin:0.2rem auto 0.2rem auto;
-	width:33%;height:2rem;
-	background:#efe;color:#000;border:1px solid #777;
-	font-size:1rem;text-align:center;padding:0.3rem
+	display:inline-block;box-sizing:border-box;margin:0.2rem auto 0.2rem auto;padding:0.2rem;
+	width:20%;height:2rem;
+	background:#000;color:#fff;border:none;
+	font-size:1rem;font-weight:800;text-align:center;
 }
+
+
+/* ============== A S I D E =============== */
+
 
 aside{
 	float:left;
@@ -43,19 +93,30 @@ aside a{
 }
 
 
+/* ================================================== */
 
+/* ================ C O N T E N T =================== */
+
+/* ================================================== */
 
 
 body article{
-	float:right;
-	width:80%;
-	background:#fee;
+	width:100%;
+	background:#fcfcff;
 }
-article h1{
-	
+
+
+article a{
+	margin-left:1.6rem;
+}
+a h1{
+	display:inline-block;
+}
+a span{
+	color:#555;font-size:0.85rem;text-shadow: 1px 1px 1px black;
 }
 article .summary{
-	padding:1rem;color:darkblue;
+	padding-left:2rem;color:#335;
 }
 article .content{
 	padding:1rem;
@@ -74,13 +135,19 @@ article .content{
 
 
 
-
+/* =============== F O O T E R =============== */
 
 footer{
 	clear:both;
 	background:#eee;
 	text-align:center;
 }
+
+
+/*-----------------------------------------------*/
+
+/*----------------- O T H E R -------------------*/
+
 
 #form{display:none;
 	z-index:11;position:fixed;top:35%;left:30%;width:40%;height:30%;
